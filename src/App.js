@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import TodoBar from './components/TodoBar';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const emptyTodo = {
+  check: false,
+  text: '',
+};
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+      newTodo: emptyTodo,
+    };
+  }
+
+  handleChange(text) {
+
+    this.setState({
+      newTodo: Object.assign(emptyTodo, {text}),
+    });
+  }
+
+  handleClick() {
+    var todos = this.state.todos.slice();
+    todos.push(this.state.newTodo);
+
+    this.setState({
+      todos,
+      newTodo: emptyTodo,
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <TodoBar
+          onChange={(e) => this.handleChange(e)}
+          onClick={() => this.handleClick()}
+          text={this.state.newTodo.text}
+        />
+        <TodoList todos={this.state.todos} />
+      </div>
+    );
+  }
 }
 
 export default App;
