@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TodoBar from './components/TodoBar';
 import TodoList from './components/TodoList';
+import Header from './components/Header';
 
 const emptyTodo = {
   done: false,
@@ -18,7 +19,7 @@ class App extends Component {
   }
 
   handleBarChange(text) {
-    var newTodo = Object.assign({}, emptyTodo, {text});
+    var newTodo = Object.assign({}, emptyTodo, { text });
     this.setState({
       newTodo,
     });
@@ -34,23 +35,23 @@ class App extends Component {
     });
   }
 
-  handleDoneChange(index){
+  handleDoneChange(index) {
     var todos = this.state.todos.slice();
     todos[index].done = !todos[index].done;
 
     this.setState(todos);
   }
 
-  handleDeleteClick(index){
+  handleDeleteClick(index) {
     var todos = this.state.todos.splice(index, 1); //remove 1 element from index position
-    
+
     this.setState(todos);
   }
 
   render() {
     return (
       <div className="App">
-        <h2>TODO List</h2>
+        <Header />
         <TodoBar
           onChange={(e) => this.handleBarChange(e)}
           onClick={() => this.handleBarClick()}

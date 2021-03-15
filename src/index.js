@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@material-ui/core/styles'
+import { webbedsMUITheme } from '@webbeds/react/theme/mui-theme'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ThemeProvider theme={webbedsMUITheme}>
+      <App />
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

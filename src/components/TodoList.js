@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from '../components/TodoItem';
+import { List } from '@material-ui/core';
 
 const TodoList = (props) => {
     const list = props.todos.map((todo, i) => {
@@ -13,9 +14,9 @@ const TodoList = (props) => {
     });
 
     return (
-        <div>
-            <ul>{list}</ul>
-        </div>
+        <List dense>
+            {list}
+        </List>
     )
 };
 
