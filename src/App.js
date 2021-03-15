@@ -4,7 +4,7 @@ import TodoBar from './components/TodoBar';
 import TodoList from './components/TodoList';
 
 const emptyTodo = {
-  check: false,
+  done: false,
   text: '',
 };
 
@@ -17,14 +17,14 @@ class App extends Component {
     };
   }
 
-  handleChange(text) {
-
+  handleBarChange(text) {
+    var newTodo = Object.assign({}, emptyTodo, {text});
     this.setState({
-      newTodo: Object.assign(emptyTodo, {text}),
+      newTodo,
     });
   }
 
-  handleClick() {
+  handleBarClick() {
     var todos = this.state.todos.slice();
     todos.push(this.state.newTodo);
 
@@ -34,15 +34,33 @@ class App extends Component {
     });
   }
 
+  handleDoneChange(index){
+    var todos = this.state.todos.slice();
+    todos[index].done = !todos[index].done;
+
+    this.setState(todos);
+  }
+
+  handleDeleteClick(index){
+    var todos = this.state.todos.splice(index, 1); //remove 1 element from index position
+    
+    this.setState(todos);
+  }
+
   render() {
     return (
       <div className="App">
+        <h2>TODO List</h2>
         <TodoBar
-          onChange={(e) => this.handleChange(e)}
-          onClick={() => this.handleClick()}
+          onChange={(e) => this.handleBarChange(e)}
+          onClick={() => this.handleBarClick()}
           text={this.state.newTodo.text}
         />
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+          onDoneChange={(idx) => this.handleDoneChange(idx)}
+          onDeleteClick={(idx) => this.handleDeleteClick(idx)}
+        />
       </div>
     );
   }
