@@ -4,17 +4,18 @@ import { Checkbox, Button, ListItem, ListItemIcon, ListItemText, ListItemSeconda
 
 const TodoItem = (props) => {
     var { done, text } = props.todo;
+    var { id, onDoneChange, onDeleteClick } = props;
     return (
-        <ListItem id={props.id}>
+        <ListItem id={id}>
             <ListItemIcon>
                 <Checkbox
                     checked={done}
-                    onChange={() => props.onDoneChange(props.id)}
+                    onChange={() => onDoneChange(id)}
                 />
             </ListItemIcon>
             <ListItemText className={done ? 'done-todo' : ''}>{text}</ListItemText>
             <ListItemSecondaryAction>
-                <Button onClick={() => props.onDeleteClick(props.id)}>X</Button>
+                <Button onClick={() => onDeleteClick(id)}>X</Button>
             </ListItemSecondaryAction>
         </ListItem>
     )

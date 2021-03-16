@@ -3,13 +3,14 @@ import TodoItem from '../components/TodoItem';
 import { Grid, List } from '@material-ui/core';
 
 const TodoList = (props) => {
-    const list = props.todos.map((todo, i) => {
+    var { todos, onDoneChange, onDeleteClick } = props;
+    const list = todos.map((todo, i) => {
         return (<TodoItem
             key={i}
             id={i}
             todo={todo}
-            onDoneChange={props.onDoneChange}
-            onDeleteClick={props.onDeleteClick}
+            onDoneChange={onDoneChange}
+            onDeleteClick={onDeleteClick}
         />)
     });
 
