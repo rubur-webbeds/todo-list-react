@@ -27,8 +27,11 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
+    /** list of todo tasks */
     todos: PropTypes.array,
-    onDoneChane: PropTypes.func,
+    /** done checkbox handler */
+    onDoneChange: PropTypes.func,
+    /** delete button handler */
     onDeleteClick: PropTypes.func,
 };
 

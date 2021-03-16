@@ -24,8 +24,11 @@ const TodoBar = (props) => {
 };
 
 TodoBar.propTypes = {
+    /** new todo's text */
     text: PropTypes.string,
+    /** textfield handler */
     onChange: PropTypes.func,
+    /** add button's handler */
     onClick: PropTypes.func,
 };
 

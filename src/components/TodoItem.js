@@ -22,9 +22,13 @@ const TodoItem = (props) => {
 };
 
 TodoItem.propTypes = {
+    /** todo task */
     todo: PropTypes.object,
+    /** task id */
     id: PropTypes.number,
+    /** delete button handler */
     onDeleteClick: PropTypes.func,
+    /** done checkbox handler */
     onDoneChange: PropTypes.func,
 };
 
