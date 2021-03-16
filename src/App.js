@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import TodoBar from './components/TodoBar';
 import TodoList from './components/TodoList';
@@ -9,62 +9,53 @@ const emptyTodo = {
   text: '',
 };
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [],
-      newTodo: emptyTodo,
-    };
-  }
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState(emptyTodo);
 
-  handleBarChange(text) {
+  const handleBarChange = (text) => {
     var newTodo = Object.assign({}, emptyTodo, { text });
-    this.setState({
-      newTodo,
-    });
+
+    setNewTodo(newTodo);
   }
 
-  handleBarClick() {
-    var todos = this.state.todos.slice();
-    todos.push(this.state.newTodo);
+  const handleBarClick = () => {
+    var newTodos = todos.slice();
+    newTodos.push(newTodo);
 
-    this.setState({
-      todos,
-      newTodo: emptyTodo,
-    });
+    setTodos(newTodos);
+    setNewTodo(emptyTodo);
   }
 
-  handleDoneChange(index) {
-    var todos = this.state.todos.slice();
-    todos[index].done = !todos[index].done;
+  const handleDoneChange = (index) => {
+    var newTodos = todos.slice();
+    newTodos[index].done = !newTodos[index].done;
 
-    this.setState(todos);
+    setTodos(newTodos);
   }
 
-  handleDeleteClick(index) {
-    var todos = this.state.todos.splice(index, 1); //remove 1 element from index position
+  const handleDeleteClick = (index) => {
+    var newTodos = todos.slice();
+    newTodos.splice(index, 1); //remove 1 element from index position
 
-    this.setState(todos);
+    setTodos(newTodos);
   }
 
-  render() {
     return (
       <div className="App">
         <Header />
         <TodoBar
-          onChange={(e) => this.handleBarChange(e)}
-          onClick={() => this.handleBarClick()}
-          text={this.state.newTodo.text}
+          onChange={(e) => handleBarChange(e)}
+          onClick={() => handleBarClick()}
+          text={newTodo.text}
         />
         <TodoList
-          todos={this.state.todos}
-          onDoneChange={(idx) => this.handleDoneChange(idx)}
-          onDeleteClick={(idx) => this.handleDeleteClick(idx)}
+          todos={todos}
+          onDoneChange={(idx) => handleDoneChange(idx)}
+          onDeleteClick={(idx) => handleDeleteClick(idx)}
         />
       </div>
     );
-  }
 }
 
 export default App;
