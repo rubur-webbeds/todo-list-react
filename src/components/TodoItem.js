@@ -4,17 +4,16 @@ import { Checkbox, Button, ListItem, ListItemIcon, ListItemText, ListItemSeconda
 import PropTypes from 'prop-types';
 
 const TodoItem = (props) => {
-    var { done, text } = props.todo;
-    var { id, onDoneChange, onDeleteClick } = props;
+    var { todo, id, onDoneChange, onDeleteClick } = props;
     return (
         <ListItem id={id}>
             <ListItemIcon>
                 <Checkbox
-                    checked={done}
+                    checked={todo.done}
                     onChange={() => onDoneChange(id)}
                 />
             </ListItemIcon>
-            <ListItemText className={done ? 'done-todo' : ''}>{text}</ListItemText>
+            <ListItemText className={todo.done ? 'done-todo' : ''}>{todo.text}</ListItemText>
             <ListItemSecondaryAction>
                 <Button onClick={() => onDeleteClick(id)}>X</Button>
             </ListItemSecondaryAction>
