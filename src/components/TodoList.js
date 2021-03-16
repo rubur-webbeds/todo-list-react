@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItem from '../components/TodoItem';
-import { List } from '@material-ui/core';
+import { Grid, List } from '@material-ui/core';
 
 const TodoList = (props) => {
     const list = props.todos.map((todo, i) => {
@@ -14,9 +14,13 @@ const TodoList = (props) => {
     });
 
     return (
-        <List dense>
-            {list}
-        </List>
+        <Grid container>
+            <Grid item xs={8}>
+                <List dense>
+                    {list}
+                </List>
+            </Grid>
+        </Grid>
     )
 };
 
