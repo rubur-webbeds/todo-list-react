@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputTextField } from '@webbeds/react/components/forms';
 import { Button, Grid } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const TodoBar = (props) => {
     var { text, onChange, onClick } = props;
@@ -20,6 +21,12 @@ const TodoBar = (props) => {
             </Grid>
         </Grid>
     )
+};
+
+TodoBar.propTypes = {
+    text: PropTypes.string,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
 };
 
 export default TodoBar;

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { Checkbox, Button, ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const TodoItem = (props) => {
     var { done, text } = props.todo;
@@ -19,6 +20,13 @@ const TodoItem = (props) => {
             </ListItemSecondaryAction>
         </ListItem>
     )
+};
+
+TodoItem.propTypes = {
+    todo: PropTypes.object,
+    id: PropTypes.number,
+    onDeleteClick: PropTypes.func,
+    onDoneChange: PropTypes.func,
 };
 
 export default TodoItem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItem from '../components/TodoItem';
 import { Grid, List } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const TodoList = (props) => {
     var { todos, onDoneChange, onDeleteClick } = props;
@@ -23,6 +24,12 @@ const TodoList = (props) => {
             </Grid>
         </Grid>
     )
+};
+
+TodoList.propTypes = {
+    todos: PropTypes.array,
+    onDoneChane: PropTypes.func,
+    onDeleteClick: PropTypes.func,
 };
 
 export default TodoList;
