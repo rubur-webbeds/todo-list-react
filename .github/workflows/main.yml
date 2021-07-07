@@ -11,6 +11,5 @@ jobs:
       - uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
         with: 
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          summary: 'Card Summary'
-          title: 'https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          text: "{gh:actor} ${{ github.head_ref }} ${{github.event.number}} ${{ github.event.pull_request.number }} ${{ github.event.pull_request }}"
+          title: '{gh:actor} created a pull request for branch: ${{ github.head_ref }}'
+          text: "https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
