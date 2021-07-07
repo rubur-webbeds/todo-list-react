@@ -13,4 +13,4 @@ jobs:
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
           summary: 'Card Summary'
           title: 'Card title'
-          text: "Card text {gh:actor}"
+          text: "Card text {gh:actor} ${{ github.head_ref }}"
