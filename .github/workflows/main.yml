@@ -12,5 +12,5 @@ jobs:
         with: 
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
           summary: 'Card Summary'
-          title: 'Card title'
+          title: 'https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           text: "{gh:actor} ${{ github.head_ref }} ${{github.event.number}} ${{ github.event.pull_request.number }} ${{ github.event.pull_request }}"
