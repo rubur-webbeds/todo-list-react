@@ -1,0 +1,16 @@
+name: MS Teams Deploy Card
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
+        with: 
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          summary: 'Card Summary'
+          title: 'Card title'
+          text: "Card text {gh:actor}"
