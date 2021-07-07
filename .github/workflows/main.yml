@@ -8,9 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      # this is the new step
-      - uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
-        if: always()
-        with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+      - uses: luisghz/simple-ms-teams-webhook-notifier@v1-latest
+        with: 
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          summary: 'Card Summary'
+          title: 'Card title'
+          text: "Card text {gh:actor}"
